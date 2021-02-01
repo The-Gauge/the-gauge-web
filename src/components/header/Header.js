@@ -13,7 +13,7 @@ const useStyles = makeStyles({
 
 })
 
-export const Header = () => {
+export const Header = ()=> {
   return (
     <>
     <Box className="container-row" style={{justifyContent:"space-between"}}>
