@@ -1,0 +1,29 @@
+.main-footer{
+    width:100%;
+    background-color: #641E1E;
+    margin-top:auto;
+    color:white;
+}
+a{
+    color: white;
+    text-decoration: none;
+}
+a:hover{
+   color:bisque;
+}
+
+.socialIcons{
+    font-size: 34px !important;
+}
+.text-copyright {
+    box-shadow: 0 0 2px 3px rgba(0, 0, 0, 0.5);
+    padding: 1px;
+    background-color:  #641e1eaf;
+}
+.text-xs-center{
+    text-align: center;
+}
+.size{
+    font-size: 15px;
+}
+  
