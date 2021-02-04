@@ -10,14 +10,35 @@ import { Autocomplete } from '@material-ui/lab';
 import PropTypes from 'prop-types';
 
 const categoryList = [
-  "POLITICS", "ECONOMY", "GLOBAL", "CULTURE", "SCIENCE&TECH", "MENTAL HEALTH", "READING STACK"
+  "POLITICS", "ECONOMY", "GLOBAL", "CULTURE", "MENTAL HEALTH", "READING STACK"
 ];
 
 const searchSuggestions = ["temp 1", "temp 2", "temp 3"];
 
 const useStyles = makeStyles({
-
-})
+    root: {
+      color: "#641E1E",
+      fontFamily: "Ramabhadra",
+      fontSize: "18px",
+      lineHeight: "46px",
+      letterSpacing: "0.195em",
+      margin: "0 4px"
+    },
+    selected:{
+      
+    },
+    indicator: {
+      display: 'flex',
+      justifyContent: 'center',
+      backgroundColor: 'transparent',
+      '& > span': {
+        maxWidth: 80,
+        width: '100%',
+        backgroundColor: 'black',
+      },
+    },
+  
+});
 
 
 function a11yProps(index) {
@@ -29,7 +50,7 @@ function a11yProps(index) {
 
 export const Header = () => {
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(null);
 
   useEffect(() => {
     console.log(value);
@@ -40,7 +61,7 @@ export const Header = () => {
   };
   return (
     <>
-    <Box className="container-row" style={{justifyContent:"space-between"}}>
+    <Box className="container-row" style={{justifyContent:"space-between", padding:"10px"}}>
       <Box flex="1 1 0" ><SideBar /></Box>
       <Box flex="1 1 0" className="container-row" justifyContent="center">
         <img src={logo} alt="The Guague" className="headerLogo"/>
@@ -80,23 +101,35 @@ export const Header = () => {
       
     </Box>
     {/* Tabs */}
-    <Box className="container-row" style={{justifyContent:"center"}}>
+    <Box className="container-row" style={{justifyContent:"center", marginTop:"0"}}>
     <Tabs
+        classes={{
+          root: classes.root,
+          indicator: classes.indicator
+          
+        }}
+        TabIndicatorProps={{ children: <span /> }}
           value={value}
           onChange={handleChange}
-          indicatorColor="primary"
-          textColor="primary"
           variant="scrollable"
           scrollButtons="auto"
           aria-label="scrollable auto tabs example"
         >
-          <Tab label="Item One" {...a11yProps(0)} />
+          {categoryList.map((category, index) => (
+            <Tab label={category} {...a11yProps(index)} selected classes={{
+              root: classes.root,
+              indicator: classes.indicator,
+              selected: classes.selected    
+            }}
+              disableRipple/>
+          ))}
+          {/* <Tab label="Item One" {...a11yProps(0)} />
           <Tab label="Item Two" {...a11yProps(1)} />
           <Tab label="Item Three" {...a11yProps(2)} />
           <Tab label="Item Four" {...a11yProps(3)} />
           <Tab label="Item Five" {...a11yProps(4)} />
           <Tab label="Item Six" {...a11yProps(5)} />
-          <Tab label="Item Seven" {...a11yProps(6)} />
+          <Tab label="Item Seven" {...a11yProps(6)} /> */}
         </Tabs>
     </Box>
     </>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { SocialHadles } from '../header/SocialHadles';
 import './style.css';
-import logo from '../../assets/img/theGaugeLogo.png';
+import logo from '../../assets/img/gaugeWhiteBg.png';
 import { Box, Button, IconButton, makeStyles, Container, Grid} from '@material-ui/core';
 function Footer(){
     return(
@@ -18,7 +18,7 @@ function Footer(){
                <Grid item xs className="img">
                     <img src={logo} alt="gauge"></img>
                </Grid>
-               <Grid item xs>
+               <Grid item xs style={{justifyContent:"center"}}>
                   <a href="#"><h4>OUR TEAM</h4></a>
                   <a href="#"><h4>FOLLOW US</h4></a>
                   <SocialHadles/>

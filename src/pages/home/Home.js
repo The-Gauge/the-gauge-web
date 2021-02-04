@@ -1,8 +1,8 @@
 import React,{useState} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-// import Button from '@material-ui/core/Button';
 import { Header } from '../../components/header/Header';
 import Footer from  '../../components/Footer/Footer';
+import { Box } from '@material-ui/core';
 
 const Home = () => {
 
@@ -10,6 +10,10 @@ const Home = () => {
   return (
       <>
         <Header />
+        
+        <Box style={{height:"1000px"}}>
+
+        </Box>
         <Footer />
       </>
     )
