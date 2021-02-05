@@ -9,12 +9,11 @@ const Home = () => {
 
   return (
       <>
-        <Header />
         
-        <Box style={{height:"1000px"}}>
-
+        <Box style={{height:"1000px"}} flex>
+          
         </Box>
-        <Footer />
+ 
       </>
     )
 }
