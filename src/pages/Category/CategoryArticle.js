@@ -26,66 +26,55 @@ export const CategoryArticle = () => {
   const classes = useStyles();
   return (
     <>
-      <Grid container style={{ marginTop: '10px', marginBottom: '50px' }} >
-        <Grid item xs={12} sm={9} >
-          <Box className='container-row' justifyContent='center'>
-            <Box className='container-row' classes={{ root: classes.heading }} justifyContent='center'>
-              Politics
+      <Box className='container-row' justifyContent='center'>
+        <Box className='container-row' classes={{ root: classes.heading }} justifyContent='center'>
+          Politics
         </Box>
+      </Box>
+      <Grid container style={{ marginTop: '20px' }} spacing={8}>
+        <Grid item xs={12} sm={6} className='container-column'>
+          <Box style={{ background: 'gray', height: '350px', width: '80%', borderRadius: '44px' }}>
+
           </Box>
-          <Grid container style={{ marginTop: '20px' }} spacing={8}>
-            <Grid item xs={12} sm={6} className='container-column'>
-              <Box style={{ background: 'gray', height: '350px', width: '80%', borderRadius: '44px' }}>
-
+          <Box className='container-row' classes={{ root: classes.articleTitle }}>
+            PRESIDENT BIDEN
               </Box>
-              <Box className='container-row' classes={{ root: classes.articleTitle }}>
-                PRESIDENT BIDEN
+          <Box className='container-row' classes={{ root: classes.articleTitle }}>
+            BY YAGYA KHERA
               </Box>
-              <Box className='container-row' classes={{ root: classes.articleTitle }}>
-                BY YAGYA KHERA
-              </Box>
-            </Grid>
-            <Grid item xs={12} sm={6} className='container-column'>
-              <Box style={{ background: 'gray', height: '350px', width: '80%', borderRadius: '44px' }}>
-
-              </Box>
-              <Box className='container-row' classes={{ root: classes.articleTitle }}>
-                PRESIDENT BIDEN
-              </Box>
-              <Box className='container-row' classes={{ root: classes.articleTitle }}>
-                BY YAGYA KHERA
-              </Box>
-            </Grid>
-            <Grid item xs={12} sm={6} className='container-column'>
-              <Box style={{ background: 'gray', height: '350px', width: '80%', borderRadius: '44px' }}>
-
-              </Box>
-              <Box className='container-row' classes={{ root: classes.articleTitle }}>
-                PRESIDENT BIDEN
-              </Box>
-              <Box className='container-row' classes={{ root: classes.articleTitle }}>
-                BY YAGYA KHERA
-              </Box>
-            </Grid>
-            <Grid item xs={12} sm={6} className='container-column'>
-              <Box style={{ background: 'gray', height: '350px', width: '80%', borderRadius: '44px' }}>
-              </Box>
-              <Box className='container-row' classes={{ root: classes.articleTitle }}>
-                PRESIDENT BIDEN
-              </Box>
-              <Box className='container-row' classes={{ root: classes.articleTitle }}>
-                BY YAGYA KHERA
-              </Box>
-
-            </Grid>
-          </Grid>
         </Grid>
-        <Grid item xs={3}>
-          <Hidden xsDown>
-            <Paper style={{ position: 'fixed', height: '100%', width:'100%' }}>
-              fixed side bar
-        </Paper>
-          </Hidden>
+        <Grid item xs={12} sm={6} className='container-column'>
+          <Box style={{ background: 'gray', height: '350px', width: '80%', borderRadius: '44px' }}>
+
+          </Box>
+          <Box className='container-row' classes={{ root: classes.articleTitle }}>
+            PRESIDENT BIDEN
+              </Box>
+          <Box className='container-row' classes={{ root: classes.articleTitle }}>
+            BY YAGYA KHERA
+              </Box>
+        </Grid>
+        <Grid item xs={12} sm={6} className='container-column'>
+          <Box style={{ background: 'gray', height: '350px', width: '80%', borderRadius: '44px' }}>
+
+          </Box>
+          <Box className='container-row' classes={{ root: classes.articleTitle }}>
+            PRESIDENT BIDEN
+              </Box>
+          <Box className='container-row' classes={{ root: classes.articleTitle }}>
+            BY YAGYA KHERA
+              </Box>
+        </Grid>
+        <Grid item xs={12} sm={6} className='container-column'>
+          <Box style={{ background: 'gray', height: '350px', width: '80%', borderRadius: '44px' }}>
+          </Box>
+          <Box className='container-row' classes={{ root: classes.articleTitle }}>
+            PRESIDENT BIDEN
+              </Box>
+          <Box className='container-row' classes={{ root: classes.articleTitle }}>
+            BY YAGYA KHERA
+              </Box>
+
         </Grid>
       </Grid>
     </>

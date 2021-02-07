@@ -9,20 +9,21 @@ import Home from './pages/home/Home';
 import { CategoryArticle } from './pages/Category/CategoryArticle';
 import Footer from './components/Footer/Footer';
 import { Header } from './components/header/Header';
+import { TheGauge } from './pages/TheGauge';
 
 
 function App() {
   return (
     <>
-    <Header />
+    {/* <Header /> */}
       <Router>
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/category/:id" component={CategoryArticle} />
-          <Redirect to='/'/>
+          <Route exact path="" component={TheGauge} />
+          {/* <Route exact path="/category/:id" component={CategoryArticle} /> */}
+          {/* <Redirect to='/'/> */}
         </Switch>
       </Router>
-    <Footer />
+    {/* <Footer /> */}
 
     </>
   );

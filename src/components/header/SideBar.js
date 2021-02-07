@@ -4,6 +4,7 @@ import SwipeableDrawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
 import {List, ListItem, ListItemText, Divider} from '@material-ui/core/';
 import MenuIcon from '@material-ui/icons/Menu';
+import { SocialHadles } from './SocialHadles';
 
 export const SideBar = () => {
   const [sideDrawer, setSideDrawer] = useState(false);
@@ -48,6 +49,7 @@ export const SideBar = () => {
           </ListItem>
         ))}
       </List>
+      <SocialHadles />
     </div>
   );
 
