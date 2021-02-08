@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import Footer from '../components/Footer/Footer';
 import { Header } from '../components/header/Header';
+import { ArticlePage } from './Article/ArticlePage';
 import { CategoryArticle } from './Category/CategoryArticle';
 import Home from './home/Home';
 
@@ -23,7 +24,9 @@ export const TheGauge = () => {
       <Switch>
           <Route exact path={'/'} component={Home} />
           <Route exact path={`/category/:id`} component={CategoryArticle} />
+          <Route exact path={`/article/:id`} component={ArticlePage} />
           <Redirect to={path} />
+          
       </Switch>
       </Grid>
       <Grid item xs={3}>
