@@ -1,7 +1,7 @@
 import React from 'react';
 import { SocialHadles } from '../header/SocialHadles';
 import './style.css';
-import logo from '../../assets/img/theGaugeLogo.png';
+import logo from '../../assets/img/theGaugeLogoWhiteB.png';
 import { Box, Button, IconButton, makeStyles, Container, Grid} from '@material-ui/core';
 function Footer(){
     return(
@@ -16,7 +16,7 @@ function Footer(){
                  <a href="#"><h4>JOIN US</h4></a>
                </Grid>
                <Grid item xs className="img">
-                    <img src={logo} alt="gauge"></img>
+                    <img src={logo} alt="gauge" className="logoWB"></img>
                </Grid>
                <Grid item xs>
                   <a href="#"><h4>OUR TEAM</h4></a>

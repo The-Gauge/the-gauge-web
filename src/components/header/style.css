@@ -1,3 +1,32 @@
-.socialIcons{
+.socialIcons {
   font-size: 34px !important;
+}
+
+/* SIDE GRID */
+.sideGrid {
+  border-left: 1px solid #641e1e;
+  padding: 0rem 0.3rem 0.1rem 0.3rem;
+}
+.grids {
+  border-bottom: 1px solid #641e1e;
+  font-size: 1rem;
+  padding: 0.4rem 0.1rem;
+}
+.head {
+  background-color: #641e1e;
+  color: white;
+  border-radius: 0.7rem;
+  padding: 0rem 1rem;
+  display: block;
+  width:92%;
+}
+.grids .para{
+  display: flex;
+}
+.para p{
+  font-size: 1rem;
+  padding: 0rem 0.4rem;
+}
+.image{
+  padding: 0rem 1rem;
 }
