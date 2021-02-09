@@ -12,6 +12,7 @@ import { Header } from '../components/header/Header';
 import { ArticlePage } from './Article/ArticlePage';
 import { CategoryArticle } from './Category/CategoryArticle';
 import Home from './home/Home';
+import SideGrid from '../components/UI/SideGrid';
 
 export const TheGauge = () => {
   let { path, url } = useRouteMatch();
@@ -26,13 +27,13 @@ export const TheGauge = () => {
           <Route exact path={`/category/:id`} component={CategoryArticle} />
           <Route exact path={`/article/:id`} component={ArticlePage} />
           <Redirect to={path} />
-          
+          <SideGrid/>
       </Switch>
       </Grid>
       <Grid item xs={3}>
         <Hidden xsDown>
-          <Paper style={{ position: 'fixed', height: '100%', width: '100%' }}>
-            fixed side bar
+          <Paper style={{ height: '100%', width: '100%' }}>
+           <SideGrid/>
           </Paper>
         </Hidden>
       </Grid>
