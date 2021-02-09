@@ -55,7 +55,7 @@ export const SideBar = () => {
 
   return (
     <>
-      <Button onClick={toggleDrawer(true)} style={{marginLeft:"2%"}}><MenuIcon style={{fontSize: "40px" ,color: "#641E1E" }} /></Button>
+      <Button onClick={toggleDrawer(true)} style={{marginLeft:"2%"}}><MenuIcon style={{fontSize: "3.6rem" ,color: "#641E1E" }} /></Button>
       <SwipeableDrawer
         ModalProps={{
           BackdropProps: {

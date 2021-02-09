@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import { SideBar } from './SideBar';
 import logo from '../../assets/img/theGaugeLogo.png'
-import { Box, Button, IconButton, InputAdornment, makeStyles, Tab, Tabs, TextField } from '@material-ui/core';
+import { Box, Button, IconButton, InputAdornment, makeStyles, Tab, Tabs, TextField,withStyles, Theme, InputBase,createStyles, fade } from '@material-ui/core';
 
 import './style.css';
 import { SocialHadles } from './SocialHadles';
@@ -9,8 +9,45 @@ import { Home, Search } from '@material-ui/icons';
 import { Autocomplete } from '@material-ui/lab';
 import PropTypes from 'prop-types';
 
+const BootstrapInput = withStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      'label + &': {
+        marginTop: theme.spacing(3),
+      },
+    },
+    input: {
+      borderRadius: 4,
+      position: 'relative',
+      backgroundColor: theme.palette.common.white,
+      border: '1px solid #ced4da',
+      fontSize: 16,
+      width: 'auto',
+      padding: '10px 12px',
+      transition: theme.transitions.create(['border-color', 'box-shadow']),
+      // Use the system font instead of the default Roboto font.
+      fontFamily: [
+        '-apple-system',
+        'BlinkMacSystemFont',
+        '"Segoe UI"',
+        'Roboto',
+        '"Helvetica Neue"',
+        'Arial',
+        'sans-serif',
+        '"Apple Color Emoji"',
+        '"Segoe UI Emoji"',
+        '"Segoe UI Symbol"',
+      ].join(','),
+      '&:focus': {
+        boxShadow: `${fade(theme.palette.primary.main, 0.25)} 0 0 0 0.2rem`,
+        borderColor: theme.palette.primary.main,
+      },
+    },
+  }),
+)(TextField);
+
 const categoryList = [
-  "POLITICS", "ECONOMY", "GLOBAL", "CULTURE", "MENTAL HEALTH", "READING STACK"
+  "POLITICS", "ECONOMY", "GLOBAL", "CULTURE", "MENTAL HEALTH", "READING STACK","musing"
 ];
 
 const searchSuggestions = ["temp 1", "temp 2", "temp 3"];
@@ -19,8 +56,8 @@ const useStyles = makeStyles({
     root: {
       color: "#641E1E",
       fontFamily: "Ramabhadra",
-      fontSize: "18px",
-      lineHeight: "46px",
+      fontSize: "1.6rem",
+      lineHeight: "2rem",
       letterSpacing: "0.195em",
       margin: "0 4px"
     },
@@ -66,24 +103,25 @@ export const Header = () => {
       <Box flex="1 1 0" className="container-row" justifyContent="center">
         <img src={logo} alt="The Guague" className="headerLogo"/>
       </Box> 
-      <Box flex="1 1 0" textAlign="right" className="container-column" alignItems="flex-end" justifyContent="space-between" style={{height:"150px"}}>
-        <Box className="container-row" style={{fontSize:"54px"}}>
+      <Box flex="1 1 0" textAlign="right" className="container-column" alignItems="flex-end" justifyContent="space-between" >
+        <Box className="container-row">
           <SocialHadles />
         </Box>
-        <Box className="container-row" style={{fontSize:"54px"}}>
-        <Box style={{width:"300px", marginRight:"20px"}}>
+        <Box className="container-row" >
+        <Box style={{width:"30rem", marginRight:"20px"}}>
             <Autocomplete
               freeSolo
               id="search-bar"
               disableClearable
               options={searchSuggestions}
               renderInput={(params) => (
-                <TextField
+                <BootstrapInput
+                  placeholder="SEARCH OUR WORK"
+                  size='small'
                   {...params}
                   label="SEARCH OUR WORK"
                   margin="normal"
-                  variant="filled"
-                  InputProps={{...params.InputProps, type: 'search',
+                  inputProps={{...params.InputProps, type: 'search',
                     startAdornment: (
                       <InputAdornment position="start">
                         <Search />
@@ -94,7 +132,7 @@ export const Header = () => {
               )}
             />
           </Box>
-          <IconButton style={{color: '#641E1E'}}><Home style={{fontSize: "46px"}}/></IconButton>
+          <IconButton style={{color: '#641E1E'}}><Home style={{fontSize: "3rem"}}/></IconButton>
           
         </Box>
       </Box>

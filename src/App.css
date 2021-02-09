@@ -15,7 +15,7 @@ body{
 }
 
 .headerLogo{
-  height: 150px;
+  height: 10rem;
   width: auto;
 }
 
@@ -45,4 +45,13 @@ body{
 
 @media screen and (max-width: 500px) {
   
+}
+
+.article{
+  font-family: 'Nunito', sans-serif;
+  letter-spacing: 0.025em;
+  font-size: 3.2rem;
+  font-weight: bold;
+  text-align: justify;
+  padding-right: 4rem;
 }
