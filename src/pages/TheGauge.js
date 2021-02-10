@@ -13,6 +13,7 @@ import { ArticlePage } from './Article/ArticlePage';
 import { CategoryArticle } from './Category/CategoryArticle';
 import Home from './home/Home';
 import SideGrid from '../components/UI/SideGrid';
+import Team from './Team/FoundingTeam';
 
 export const TheGauge = () => {
   let { path, url } = useRouteMatch();
@@ -26,6 +27,7 @@ export const TheGauge = () => {
           <Route exact path={'/'} component={Home} />
           <Route exact path={`/category/:id`} component={CategoryArticle} />
           <Route exact path={`/article/:id`} component={ArticlePage} />
+          <Route exact path={`/team`} component={Team} />
           <Redirect to={path} />
           <SideGrid/>
       </Switch>
