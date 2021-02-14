@@ -1,5 +1,5 @@
 body{
-  background-image: url('theGaugebg.png');
+  /* background-image: url('theGaugebg.png'); */
   padding: 0px;
 }
 
@@ -16,6 +16,11 @@ body{
 
 .headerLogo{
   height: 10rem;
+  width: auto;
+}
+
+.footerLogo{
+  height: 15rem;
   width: auto;
 }
 

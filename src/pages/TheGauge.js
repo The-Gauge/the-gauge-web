@@ -14,6 +14,7 @@ import { CategoryArticle } from './Category/CategoryArticle';
 import Home from './home/Home';
 import SideGrid from '../components/UI/SideGrid';
 import Team from './Team/FoundingTeam';
+import { HeaderFixed } from '../components/header/HeaderFixed';
 
 export const TheGauge = () => {
   let { path, url } = useRouteMatch();
@@ -21,6 +22,7 @@ export const TheGauge = () => {
   return (
     <>
     <Header />
+    {/* <HeaderFixed /> */}
     <Grid container style={{ marginTop: '10px', marginBottom: '50px' }} >
       <Grid item xs={12} sm={9} >
       <Switch>
@@ -29,7 +31,7 @@ export const TheGauge = () => {
           <Route exact path={`/article/:id`} component={ArticlePage} />
           <Route exact path={`/team`} component={Team} />
           <Redirect to={path} />
-          <SideGrid/>
+          {/* <SideGrid/> */}
       </Switch>
       </Grid>
       <Grid item xs={3}>
