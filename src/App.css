@@ -1,5 +1,5 @@
 body{
-  background-image: url('theGaugebg.png');
+  /* background-image: url('theGaugebg.png'); */
   padding: 0px;
 }
 
@@ -16,6 +16,11 @@ body{
 
 .headerLogo{
   height: 10rem;
+  width: auto;
+}
+
+.footerLogo{
+  height: 15rem;
   width: auto;
 }
 
@@ -54,4 +59,11 @@ body{
   font-weight: bold;
   text-align: justify;
   padding-right: 4rem;
+}
+
+.sticky{
+  position: -webkit-sticky;
+  position: sticky;
+  top: 4rem;
+  bottom: 10rem;
 }

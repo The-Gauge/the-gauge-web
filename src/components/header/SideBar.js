@@ -6,11 +6,10 @@ import {List, ListItem, ListItemText, Divider} from '@material-ui/core/';
 import MenuIcon from '@material-ui/icons/Menu';
 import { SocialHadles } from './SocialHadles';
 
-export const SideBar = () => {
-  const [sideDrawer, setSideDrawer] = useState(false);
+export const SideBar = (props) => {
   const useStyles = makeStyles({
     list: {
-      width: 300,
+      width: '30rem',
     },
     fullList: {
       width: 'auto',
@@ -20,19 +19,12 @@ export const SideBar = () => {
     }
   });
   const classes = useStyles();
-  const toggleDrawer = ( open) => (event) => {
-    if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-      return;
-    }
-
-    setSideDrawer( open );
-  };
   const list = () => (
     <div
       className={classes.list}
       role="presentation"
-      onClick={toggleDrawer( false)}
-      onKeyDown={toggleDrawer ( false)}
+      onClick={props.toggleDrawer( false)}
+      onKeyDown={props.toggleDrawer ( false)}
     >
       <List>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
@@ -55,7 +47,6 @@ export const SideBar = () => {
 
   return (
     <>
-      <Button onClick={toggleDrawer(true)} style={{marginLeft:"2%"}}><MenuIcon style={{fontSize: "3.6rem" ,color: "#641E1E" }} /></Button>
       <SwipeableDrawer
         ModalProps={{
           BackdropProps: {
@@ -65,9 +56,9 @@ export const SideBar = () => {
           }
         }}
         anchor="left"
-        open={sideDrawer}
-        onClose={toggleDrawer(false)}
-        onOpen={toggleDrawer(true)}
+        open={props.sideDrawer}
+        onClose={props.toggleDrawer(false)}
+        onOpen={props.toggleDrawer(true)}
       >
         {list()}
       </SwipeableDrawer>

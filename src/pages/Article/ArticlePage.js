@@ -10,7 +10,7 @@ const useStyles = makeStyles({
   titleDesc: {
     fontSize: '2.2rem',
     letterSpacing: '0.455rem',
-    textDecoration: 'uppercase'
+    textTransform: 'uppercase'
   },
   image: {
     width:'90%',
@@ -19,7 +19,7 @@ const useStyles = makeStyles({
     color: '#095CFF',
     fontSize: '2.2rem',
     letterSpacing: '0.455rem',
-    textDecoration: 'uppercase'
+    textTransform: 'uppercase'
   }
 })
 
