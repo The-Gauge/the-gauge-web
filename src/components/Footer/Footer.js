@@ -2,7 +2,7 @@ import React from 'react';
 import { SocialHadles } from '../header/SocialHadles';
 import './style.css';
 import logo from '../../assets/img/gaugeWhiteBg.png';
-import { Box, Button, IconButton, makeStyles, Container, Grid, useTheme, useMediaQuery} from '@material-ui/core';
+import { Box, Grid, useTheme, useMediaQuery} from '@material-ui/core';
 function Footer(){
   
   const theme = useTheme();

@@ -58,7 +58,7 @@ export const Header = () => {
   };
   
   const classes = useStyles();
-  const [value, setValue] = React.useState(null);
+  const [value, setValue] = React.useState(0);
 
   useEffect(() => {
     console.log(value);

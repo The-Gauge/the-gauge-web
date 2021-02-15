@@ -5,7 +5,7 @@ import { Facebook, Instagram, LinkedIn, Twitter } from '@material-ui/icons';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import { IconButton } from '@material-ui/core';
 import Anjali from '../../assets/img/anjali.png';
-function Team() {
+export const Team  = () => {
     return (
         <>
             <h4 className="heading">FOUNDING TEAM</h4>
@@ -160,7 +160,7 @@ function Team() {
         </>
     )
 }
-export default Team;
+
 
 
 

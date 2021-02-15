@@ -5,7 +5,7 @@ import { SideBar } from './SideBar';
 import { Autocomplete } from '@material-ui/lab';
 import { Search } from '@material-ui/icons';
 
-export const HeaderFixed = () => {
+export const HeaderFixed = (props) => {
   const searchSuggestions = ['fdf', 'fdf']
 
   const [sideDrawer, setSideDrawer] = React.useState(false);
@@ -56,7 +56,7 @@ export const HeaderFixed = () => {
 
   return (
     <>
-      <AppBar position="fixed">
+      <AppBar position="fixed" {...props}>
         <Toolbar style={{ padding: '0', justifyContent:'space-between' }} className='container-row'>
           <Box className='container-row'><Button onClick={toggleDrawer(true)}  >
             <Typography variant="h6" color="inherit"><Menu style={{ fontSize: "3.3rem", color: 'white' }} /></Typography></Button>

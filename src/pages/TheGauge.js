@@ -1,5 +1,5 @@
-import { Grid, Hidden, Paper } from '@material-ui/core';
-import React from 'react';
+import {  Box, Grid, Hidden, Paper, Slide, useMediaQuery, useScrollTrigger, useTheme } from '@material-ui/core';
+import React, {  useState } from 'react';
 import {
   BrowserRouter as Router,
   Redirect,
@@ -12,17 +12,67 @@ import { Header } from '../components/header/Header';
 import { ArticlePage } from './Article/ArticlePage';
 import { CategoryArticle } from './Category/CategoryArticle';
 import Home from './home/Home';
-import SideGrid from '../components/UI/SideGrid';
-import Team from './Team/FoundingTeam';
+import {SideGrid} from '../components/UI/SideGrid';
 import { HeaderFixed } from '../components/header/HeaderFixed';
+import { Team } from './Team/FoundingTeam';
+function HideOnScroll(props) {
+  const { children, window } = props;
+  console.log(children)
+  // Note that you normally won't need to set the window ref as useScrollTrigger
+  // will default to window.
+  // This is only being set here because the demo is in an iframe.
+  const trigger = useScrollTrigger({ target: window ? window() : undefined });
 
-export const TheGauge = () => {
+  return (
+    <Slide appear={false} direction="down" in={!trigger}>
+      {children}
+    </Slide>
+    
+  );
+}
+
+export const TheGauge = (props) => {
   let { path, url } = useRouteMatch();
-  console.log(path+' and  '+ url);
+  const [fixedNav, setFixedNav] = useState(0)
+  React.useEffect(() => {
+  
+    
+  }, [fixedNav])
+
+  function handleScroll(){
+    let newScrollPosition = window.scrollY;
+     if(newScrollPosition>140) setFixedNav(true)
+     else setFixedNav(false);
+  }
+  
+  window.addEventListener('scroll', handleScroll, {passive: true});
+
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
   return (
     <>
-    <Header />
-    {/* <HeaderFixed /> */}
+    {matches? (
+      <>
+      <Header />
+  
+      <Slide appear={false } direction="down" in={fixedNav}>
+        
+          <Box display='flex' style={{position:'fixed', margin:'0'}}>
+            <HeaderFixed/>
+          </Box>
+      </Slide>
+      </>
+    ):(
+      <Box style={{height:'9rem'}}>
+        <HeaderFixed/>
+      </Box>
+    )}
+    {/* <Slide appear={false } direction="down" in={fixedNav}>
+        <Box display='flex' style={{position:'fixed', margin:'0'}}>
+          <HeaderFixed/>
+        </Box>
+    </Slide> */}
+      
     <Grid container style={{ marginTop: '10px', marginBottom: '50px' }} >
       <Grid item xs={12} sm={9} >
       <Switch>
@@ -31,14 +81,12 @@ export const TheGauge = () => {
           <Route exact path={`/article/:id`} component={ArticlePage} />
           <Route exact path={`/team`} component={Team} />
           <Redirect to={path} />
-          {/* <SideGrid/> */}
       </Switch>
       </Grid>
       <Grid item xs={3}>
         <Hidden xsDown>
-          <Paper style={{ height: '100%', width: '100%' }}>
+          
            <SideGrid/>
-          </Paper>
         </Hidden>
       </Grid>
     </Grid>
