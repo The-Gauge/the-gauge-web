@@ -5,13 +5,14 @@ import { Facebook, Instagram, LinkedIn, Twitter } from '@material-ui/icons';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import { IconButton } from '@material-ui/core';
 import Anjali from '../../assets/img/anjali.png';
+import { Heading } from '../../components/UI/Heading';
 export const Team  = () => {
     return (
         <>
-            <h4 className="heading">FOUNDING TEAM</h4>
+            <Heading name='founding team' />
             <Box className="participants-container">
                 {/* <Grid continer> */}
-                <Grid item xs={6} spacing={2} >
+                <Grid item sm={6} xs={12} spacing={2} >
                     <Box className="image-details">
                         <Box className="main_details">
                             <img className="image__img" src=""></img>
@@ -35,7 +36,7 @@ export const Team  = () => {
                         </Box>
                     </Box>
                 </Grid>
-                <Grid item xs={6} spacing={2}>
+                <Grid sm={6} xs={12} spacing={2}>
                     <Box className="image-details">
                         <Box className="main_details">
                             <img className="image__img" src=""></img>
@@ -59,7 +60,7 @@ export const Team  = () => {
                         </Box>
                     </Box>
                 </Grid>
-                <Grid item xs={6} spacing={2} >
+                <Grid sm={6} xs={12} spacing={2} >
                     <Box className="image-details">
                         <Box className="main_details">
                             <img className="image__img" src={Anjali}></img>
@@ -83,7 +84,7 @@ export const Team  = () => {
                         </Box>
                     </Box>
                 </Grid>
-                <Grid item xs={6} spacing={2}>
+                <Grid sm={6} xs={12} spacing={2}>
                     <Box className="image-details">
                         <Box className="main_details">
                             <img className="image__img" src=""></img>
@@ -107,7 +108,7 @@ export const Team  = () => {
                         </Box>
                     </Box>
                 </Grid>
-                <Grid item xs={6} spacing={2} >
+                <Grid sm={6} xs={12} spacing={2} >
                     <Box className="image-details">
                         <Box className="main_details">
                             <img className="image__img" src=""></img>
@@ -131,7 +132,7 @@ export const Team  = () => {
                         </Box>
                     </Box>
                 </Grid>
-                <Grid item xs={6} spacing={2}>
+                <Grid sm={6} xs={12} spacing={2}>
                     <Box className="image-details">
                         <Box className="main_details">
                             <img className="image__img" src=""></img>

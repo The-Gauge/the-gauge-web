@@ -56,7 +56,7 @@ export const HeaderFixed = (props) => {
 
   return (
     <>
-      <AppBar position="fixed" {...props}>
+      <AppBar position="fixed" >
         <Toolbar style={{ padding: '0', justifyContent:'space-between' }} className='container-row'>
           <Box className='container-row'><Button onClick={toggleDrawer(true)}  >
             <Typography variant="h6" color="inherit"><Menu style={{ fontSize: "3.3rem", color: 'white' }} /></Typography></Button>

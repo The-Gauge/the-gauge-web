@@ -1,10 +1,40 @@
 import React from 'react';
-import { Box, Button, IconButton, makeStyles, Container, Grid, Paper} from '@material-ui/core';
+import { Box, Button, IconButton, makeStyles, Container, Grid, Paper, Typography} from '@material-ui/core';
 import './style.css';
-// import imageE from '../../assets/img/economy.jpg';
+import imageE from '../../assets/img/economy.jpg';
 // import imageP from '../../assets/img/farmer.jpg';
 // import imageG from '../../assets/img/vaccine.jpg';
 // import imageS from '../../assets/img/science.jpg';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Navigation, Mousewheel,Autoplay } from 'swiper';
+
+import 'swiper/swiper.scss';
+import 'swiper/components/navigation/navigation.scss';
+import 'swiper/components/pagination/pagination.scss';
+import 'swiper/components/scrollbar/scrollbar.scss';
+
+SwiperCore.use([Navigation,Mousewheel,Autoplay]);
+
+const ArticleCard = () => {
+  return(
+    <Box display='flex' flexDirection='column' style={{paddingBottom:'3rem', minHeight:'32rem'}}>
+      <Box bgcolor='primary.main' color='primary.contrastText' style={{ height: '3rem', width: '100%', textTransform: 'uppercase' }} className='container-row'>
+        <Typography variant='h3' style={{ marginLeft: '3rem' }}>politics</Typography>
+      </Box>
+      <Box className='container-row'>
+        <Typography variant='h2' style={{ textTransform: 'uppercase', flex: '1 1 0' }}>the protest</Typography>
+        <Typography variant='h2' style={{ flex: '1 1 0' }}>3 mins read</Typography>
+      </Box>
+
+      <Box style={{ width: '100%', height:'17rem' }}>
+        <img alt='article image' src={imageE} style={{ height: '17rem' }}></img>
+      </Box>
+      <Typography variant='h4' style={{ flex: '1 1 0', marginBottom:'1rem', }}>the farmer's protest might end by lorem ipsum but...</Typography>
+    </Box>
+  )
+}
+
 export const SideGrid = () =>{
     return(
       <>
@@ -12,11 +42,32 @@ export const SideGrid = () =>{
           
           position:'sticky', top:'8rem' ,
           display:'flex',
-          height:'100vh',
+          height:'110vh',
           width:'100%'
           
          }} >
-           <Box style={{width:'100%', background:'red', height:'20rem'}}></Box>
+          <Swiper
+            style={{margin:0, width:'100%'}}
+            
+            mousewheel
+            direction='vertical'
+            loop
+            autoplay
+            slidesPerView={3}
+            onSwiper={(swiper) => console.log(swiper)}
+            onSlideChange={() => console.log('slide change')}
+          >
+            <SwiperSlide style={{
+              //borderBottom: '1px solid #641e1e'
+              }}>
+              <ArticleCard />
+            </SwiperSlide>
+            <SwiperSlide><ArticleCard /></SwiperSlide>
+            <SwiperSlide><ArticleCard /></SwiperSlide>
+            <SwiperSlide><ArticleCard /></SwiperSlide>
+    
+    </Swiper>
+           
             
       </Paper>
      

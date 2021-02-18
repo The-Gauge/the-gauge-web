@@ -48,8 +48,11 @@ const lightTheme = createMuiTheme({
       textTransform: "none",
     },
     h3: {
-      fontSize: "1.7rem",
-      lineHeight: "2rem",
+      fontFamily: "Ramabhadra",
+      fontSize: "1.6rem",
+      lineHeight: "3rem",
+      letterSpacing: "0.195em",
+      textTransform: 'uppercase'
     },
     h4: {
       fontWeight: "500",

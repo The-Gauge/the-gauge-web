@@ -1,4 +1,4 @@
-import {  Box, Grid, Hidden, Paper, Slide, useMediaQuery, useScrollTrigger, useTheme } from '@material-ui/core';
+import {  Box, Container, Grid, Hidden, Paper, Slide, useMediaQuery, useScrollTrigger, useTheme } from '@material-ui/core';
 import React, {  useState } from 'react';
 import {
   BrowserRouter as Router,
@@ -15,6 +15,8 @@ import Home from './home/Home';
 import {SideGrid} from '../components/UI/SideGrid';
 import { HeaderFixed } from '../components/header/HeaderFixed';
 import { Team } from './Team/FoundingTeam';
+
+
 function HideOnScroll(props) {
   const { children, window } = props;
   console.log(children)
@@ -55,12 +57,13 @@ export const TheGauge = (props) => {
       <>
       <Header />
   
-      <Slide appear={false } direction="down" in={fixedNav}>
+      {/* <Slide appear={false } direction="down" in={fixedNav}> */}
         
-          <Box display='flex' style={{position:'fixed', margin:'0'}}>
+          <Box display='flex' style={{display:fixedNav? 'flex' : 'none'}}>
             <HeaderFixed/>
           </Box>
-      </Slide>
+          
+      {/* </Slide> */}
       </>
     ):(
       <Box style={{height:'9rem'}}>
