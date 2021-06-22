@@ -1,6 +1,11 @@
 import { Box, makeStyles } from '@material-ui/core'
-import React from 'react';
+import moment from 'moment';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { getArticleById } from '../../actions/article.action';
 import image from '../../assets/img/sampleArticle.png'
+import { publicUrl } from '../../urlConstants';
 const useStyles = makeStyles({
   articleTitle: {
     fontSize: '4.2rem',
@@ -24,32 +29,67 @@ const useStyles = makeStyles({
 })
 
 export const ArticlePage = () => {
+  let {id} =  useParams()
+  const article = useSelector(state => state.article)
+  const dispatch = useDispatch()
+  const [data, setData] = useState(article.data)
+  
+
+  useEffect(() => {
+    setData(article.data)
+  }, [article.data])
+
+  useEffect(() => {
+    dispatch(getArticleById(id));
+  }, [id])
+
+  useEffect(() => {
+   
+
+  }, [data])
+
+  useEffect(() => {
+    console.log(id)
+    dispatch(getArticleById(id));
+  }, [])
+
+
   const classes = useStyles();
   return (
     <>
-      <Box className='container-column' style={{ paddingLeft: '3rem', alignItems: 'flex-start' }}>
+    {article.loading ? "Loading" : (
+
+      data && (
+        <Box className='container-column' style={{ paddingLeft: '3rem', alignItems: 'flex-start' }}>
         <Box display='flex' flexDirection='column' style={{ paddingLeft: '1rem', marginBottom: '1rem' }}>
-          <Box className={classes.articleTitle}>JOE BIDEN</Box>
-          <Box className={classes.titleDesc}>BY YAGYA KHERA</Box>
-          <Box className={classes.titleDesc}>Jan 26, 2020</Box>
-          <Box className={classes.titleDesc}>9:46 AM</Box>
+          <Box className={classes.articleTitle}>{data.name}</Box>
+          <Box className={classes.titleDesc}>{data.author.name}</Box>
+          <Box className={classes.titleDesc}>{moment(data.createdAt).format("MMM DD, YYYY")}</Box>
+          <Box className={classes.titleDesc}>{moment(data.createdAt).format("LT")}</Box>
 
         </Box>
         <Box className='article' style={{marginBottom:'2rem'}}>
-          Joe Biden was elected as the president of the US, a report by CNN. Here are some interesting facts about the President and the Vice President Kamala Harris. A democratic party candidate, he was elected as the
+          {data.content.slice(0,200)}
         </Box>
         <Box className={classes.image}>
-          <img src="https://cdn3.wpbeginner.com/wp-content/uploads/2018/12/freewebsitehosting.png"
-           style={{width:'100%'}}>
+          <img src={`${publicUrl}${data.articlePictures[0].imgLink}`}
+           style={{height:'50rem'}}>
           </img>
         </Box>
-        <Box className={classes.titleDesc}>IMAGE SOURCE : <a href="https://cdn3.wpbeginner.com/wp-content/uploads/2018/12/freewebsitehosting.png" className={classes.sourceLink}>source name</a></Box>
+        <Box className={classes.titleDesc}>IMAGE SOURCE : <a href={`${publicUrl}${data.articlePictures[0].imgLink}`} className={classes.sourceLink}>{`${data.articlePictures[0].imgSource}`}</a></Box>
         <Box className='article' style={{marginTop:'2rem'}}>
-          Joe Biden was elected as the president of the US, a report by CNN. Here are some interesting facts about the President and the Vice President Kamala Harris. A democratic party candidate, he was elected as the
+        {data.content.slice(200)}
+        {"this is \" this works \" \n do"}
+   
         </Box>
 
 
       </Box>
+      ) 
+      
+      
+    )}
+      
     </>
   )
 }

@@ -82,7 +82,7 @@ export const TheGauge = (props) => {
           <Route exact path={'/'} component={Home} />
           <Route exact path={`/category/:id`} component={CategoryArticle} />
           <Route exact path={`/article/:id`} component={ArticlePage} />
-          <Route exact path={`/team`} component={Team} />
+          {/* <Route exact path={`/team`} component={Team} /> */}
           <Redirect to={path} />
       </Switch>
       </Grid>

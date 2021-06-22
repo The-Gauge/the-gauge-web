@@ -8,6 +8,9 @@ import { SocialHadles } from './SocialHadles';
 import { Home, Search, Menu } from '@material-ui/icons';
 import { Autocomplete } from '@material-ui/lab';
 import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllCategory } from '../../actions/category.action';
+import { useHistory } from 'react-router-dom';
 
 const categoryList = [
   "POLITICS", "ECONOMY", "GLOBAL", "CULTURE", "MENTAL HEALTH", "READING STACK","musing"
@@ -40,7 +43,6 @@ const useStyles = makeStyles({
   
 });
 
-
 function a11yProps(index) {
   return {
     id: `scrollable-auto-tab-${index}`,
@@ -49,6 +51,11 @@ function a11yProps(index) {
 }
 
 export const Header = () => {
+
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const categories = useSelector(state => state.categories);
   const [sideDrawer, setSideDrawer] = React.useState(false);
   const toggleDrawer = ( open) => (event) => {
     if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -62,7 +69,16 @@ export const Header = () => {
 
   useEffect(() => {
     console.log(value);
+    if(value != null) history.push(`/category/${categories.categories[value]._id}`)
+  
   }, [value])
+
+  useEffect(() => {
+    dispatch(getAllCategory());
+    
+  }, [])
+
+  
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -145,8 +161,8 @@ export const Header = () => {
           scrollButtons="auto"
           aria-label="scrollable auto tabs example"
         >
-          {categoryList.map((category, index) => (
-            <Tab label={category} {...a11yProps(index)} selected classes={{
+          {categories.categories && categories.categories.map((category, index) => (
+            <Tab label={category.name} {...a11yProps(index)} selected classes={{
               root: classes.root,
               indicator: classes.indicator,
               selected: classes.selected    

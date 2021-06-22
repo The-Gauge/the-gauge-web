@@ -1,5 +1,7 @@
 import { Box, colors, Grid, Hidden, makeStyles, Paper } from '@material-ui/core'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { useLocation, useParams } from 'react-router-dom'
 import image from '../../assets/img/sampleArticle.png'
 import { Heading } from '../../components/UI/Heading'
 
@@ -25,6 +27,20 @@ const useStyles = makeStyles({
 
 export const CategoryArticle = () => {
 
+ let {id} =  useParams()
+ const categories = useSelector(state => state.categories)
+ const [category, setCategory] = useState(null)
+
+ useEffect(() => {
+   let cat = categories.categories;
+   let ans;
+   if(cat) {ans = cat.find((category) => {
+     return category._id === id
+   })}
+   setCategory(ans)
+   console.log(ans)
+ }, [id, categories])
+
   const classes = useStyles();
   return (
     <>
@@ -33,14 +49,19 @@ export const CategoryArticle = () => {
           Politics
         </Box>
       </Box> */}
-      <Heading name='politics' />
+      <Heading name={category && category.name} />
       <Grid container style={{ marginTop: '4rem' }} >
+        
         <Grid item xs={12} sm={6} className='container-column'>
           <Box style={{
-            width: '90%', borderRadius: '2.4rem',
-            //,backgroundImage:`url("https://hatrabbits.com/wp-content/uploads/2016/12/rare-combinaties.jpg")` }}>
+            height:'28rem',
+            width: '90%', 
+            backgroundImage: `url("${image}")`,
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            backgroundPosition:'center'
           }}>
-            <img src={image} style={{ width: '100%' }}></img>
+            
           </Box>
           <Box className='container-row' classes={{ root: classes.articleTitle }}>
             PRESIDENT BIDEN
@@ -49,48 +70,7 @@ export const CategoryArticle = () => {
             BY YAGYA KHERA
               </Box>
         </Grid>
-        <Grid item xs={12} sm={6} className='container-column'>
-          <Box style={{
-            width: '90%', borderRadius: '2.4rem',
-            //,backgroundImage:`url("https://hatrabbits.com/wp-content/uploads/2016/12/rare-combinaties.jpg")` }}>
-          }}>
-            <img src={image} style={{ width: '100%' }}></img>
-          </Box>
-          <Box className='container-row' classes={{ root: classes.articleTitle }}>
-            PRESIDENT BIDEN
-              </Box>
-          <Box className='container-row' classes={{ root: classes.articleTitle }}>
-            BY YAGYA KHERA
-              </Box>
-        </Grid>
-        <Grid item xs={12} sm={6} className='container-column'>
-          <Box style={{
-            width: '90%', borderRadius: '2.4rem',
-            //,backgroundImage:`url("https://hatrabbits.com/wp-content/uploads/2016/12/rare-combinaties.jpg")` }}>
-          }}>
-            <img src={image} style={{ width: '100%' }}></img>
-          </Box>
-          <Box className='container-row' classes={{ root: classes.articleTitle }}>
-            PRESIDENT BIDEN
-              </Box>
-          <Box className='container-row' classes={{ root: classes.articleTitle }}>
-            BY YAGYA KHERA
-              </Box>
-        </Grid>
-        <Grid item xs={12} sm={6} className='container-column'>
-          <Box style={{
-            width: '90%', borderRadius: '2.4rem',
-            //,backgroundImage:`url("https://hatrabbits.com/wp-content/uploads/2016/12/rare-combinaties.jpg")` }}>
-          }}>
-            <img src={image} style={{ width: '100%' }}></img>
-          </Box>
-          <Box className='container-row' classes={{ root: classes.articleTitle }}>
-            PRESIDENT BIDEN
-              </Box>
-          <Box className='container-row' classes={{ root: classes.articleTitle }}>
-            BY YAGYA KHERA
-              </Box>
-        </Grid>
+        
       </Grid>
     </>
 
