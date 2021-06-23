@@ -15,6 +15,7 @@ import Home from './home/Home';
 import {SideGrid} from '../components/UI/SideGrid';
 import { HeaderFixed } from '../components/header/HeaderFixed';
 import { Team } from './Team/FoundingTeam';
+import { Search } from './Search/Search';
 
 
 function HideOnScroll(props) {
@@ -37,9 +38,9 @@ export const TheGauge = (props) => {
   let { path, url } = useRouteMatch();
   const [fixedNav, setFixedNav] = useState(0)
   React.useEffect(() => {
-  
+    window.scrollTo(0,0);
     
-  }, [fixedNav])
+  }, [])
 
   function handleScroll(){
     let newScrollPosition = window.scrollY;
@@ -82,8 +83,9 @@ export const TheGauge = (props) => {
           <Route exact path={'/'} component={Home} />
           <Route exact path={`/category/:id`} component={CategoryArticle} />
           <Route exact path={`/article/:id`} component={ArticlePage} />
+          <Route exact path={`/search`} component={Search} />
           {/* <Route exact path={`/team`} component={Team} /> */}
-          <Redirect to={path} />
+          <Redirect to="/" />
       </Switch>
       </Grid>
       <Grid item xs={3}>

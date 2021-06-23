@@ -1,9 +1,11 @@
 import { Box, colors, Grid, Hidden, makeStyles, Paper } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
-import { useLocation, useParams } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { useHistory, useLocation, useParams } from 'react-router-dom'
+import { getCategoryArticles, resetArticles } from '../../actions/articles.action'
 import image from '../../assets/img/sampleArticle.png'
 import { Heading } from '../../components/UI/Heading'
+import { publicUrl } from '../../urlConstants'
 
 const useStyles = makeStyles({
   heading: {
@@ -25,11 +27,22 @@ const useStyles = makeStyles({
   }
 })
 
+
 export const CategoryArticle = () => {
 
  let {id} =  useParams()
  const categories = useSelector(state => state.categories)
+ 
+const dispatch = useDispatch()
+
+ const articles = useSelector(state => state.articles)
+ const [data, setData] = useState(articles.articles)
+
  const [category, setCategory] = useState(null)
+
+ useEffect(() => {
+   setData(articles.articles)
+ }, [articles.articles])
 
  useEffect(() => {
    let cat = categories.categories;
@@ -38,10 +51,46 @@ export const CategoryArticle = () => {
      return category._id === id
    })}
    setCategory(ans)
-   console.log(ans)
  }, [id, categories])
 
+ useEffect(() => {
+  window.scrollTo(0,0);
+   dispatch(resetArticles())
+   if(category) dispatch(getCategoryArticles(category._id))
+ }, [category])
+
+
   const classes = useStyles();
+
+const ArticleBox = ({article}) => {
+
+  const history = useHistory()
+  const onClick = () => {
+    history.push(`/article/${article._id}`)
+  }
+
+  return (
+    <Grid item xs={12} sm={6} className='container-column' onClick={onClick} style={{cursor:'pointer'}}>
+          <Box style={{
+            height:'28rem',
+            width: '90%', 
+            backgroundImage: `url("${publicUrl}${article.articlePictures[0].imgLink}")`,
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+            backgroundPosition:'center'
+          }}>
+            
+          </Box>
+          <Box className='container-row' classes={{ root: classes.articleTitle }}>
+          {article.name}
+              </Box>
+          <Box className='container-row' classes={{ root: classes.articleTitle }}>
+            {article.author && article.author.name}
+              </Box>
+        </Grid>
+  )
+}
+
   return (
     <>
       {/* <Box className='container-row' justifyContent='center'>
@@ -50,28 +99,23 @@ export const CategoryArticle = () => {
         </Box>
       </Box> */}
       <Heading name={category && category.name} />
-      <Grid container style={{ marginTop: '4rem' }} >
+      { articles.loading ? "Loading" : (
+        <Grid container style={{ marginTop: '4rem' }} >
+          {data.length > 0 ? 
+          data.map((article) => {
+            return (
+              article && <ArticleBox article={article}/>
+            )
+          })
+
+          :
+          "No Articles Found"
+          }
         
-        <Grid item xs={12} sm={6} className='container-column'>
-          <Box style={{
-            height:'28rem',
-            width: '90%', 
-            backgroundImage: `url("${image}")`,
-            backgroundRepeat: 'no-repeat',
-            backgroundSize: 'cover',
-            backgroundPosition:'center'
-          }}>
-            
-          </Box>
-          <Box className='container-row' classes={{ root: classes.articleTitle }}>
-            PRESIDENT BIDEN
-              </Box>
-          <Box className='container-row' classes={{ root: classes.articleTitle }}>
-            BY YAGYA KHERA
-              </Box>
+          
         </Grid>
-        
-      </Grid>
+      )}
+      
     </>
 
   )

@@ -1,4 +1,5 @@
-import { sideGridConstants } from "../actions/constants";
+import { bannerConstants,  } from "../actions/constants";
+
 
 
 const initState = {
@@ -10,13 +11,13 @@ const initState = {
 
 export default (state = initState, action) => {
     switch (action.type) {
-      case sideGridConstants.GET_SIDEGRIDS_REQUEST:
+      case bannerConstants.GET_BANNER_REQUEST:
         state = {
           ...state,
           loading: true,
         };
         break;
-      case sideGridConstants.GET_SIDEGRIDS_SUCCESS:
+      case bannerConstants.GET_BANNER_SUCCESS:
         state = {
           ...state,
           loading: false,
@@ -24,7 +25,7 @@ export default (state = initState, action) => {
           requested: true
         };
         break;
-      case sideGridConstants.GET_SIDEGRIDS_FAILURE:
+      case bannerConstants.GET_BANNER_FAILURE:
         state = {
           ...state,
           loading: false,
@@ -33,5 +34,4 @@ export default (state = initState, action) => {
         break;
     }
     return state;
-
 }

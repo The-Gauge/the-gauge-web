@@ -1,26 +1,26 @@
 import axios from "../helpers/axios";
-import { sideGridConstants } from "./constants";
+import { bannerConstants } from "./constants";
 
 
 
-export const getSideGridArticles = () => {
+export const getBannerArticles = () => {
     return async dispatch => {
         dispatch({ type: 
-            sideGridConstants.GET_SIDEGRIDS_REQUEST
+            bannerConstants.GET_BANNER_REQUEST
         });
-        const res = await axios.get(`articles/sideGrid`);
+        const res = await axios.get(`/articles/banner`);
         console.log(res);
         if(res.status === 200){
 
-            const  articles  = res.data;
+            const  articles  = res.data.results;
 
             dispatch({
-                type: sideGridConstants.GET_SIDEGRIDS_SUCCESS,
+                type: bannerConstants.GET_BANNER_SUCCESS,
                 payload: { articles: articles }
             });
         }else{
             dispatch({
-                type: sideGridConstants.GET_SIDEGRIDS_FAILURE,
+                type: bannerConstants.GET_BANNER_FAILURE,
                 payload: { error: "Could not Fetch data" }
             });
         }

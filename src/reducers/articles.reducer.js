@@ -1,7 +1,7 @@
-import { sideGridConstants } from "../actions/constants";
-
+import { articlesConstants,} from "../actions/constants";
 
 const initState = {
+    searchTerm: null,
     articles: [],
     loading: false,
     error: null,
@@ -10,13 +10,19 @@ const initState = {
 
 export default (state = initState, action) => {
     switch (action.type) {
-      case sideGridConstants.GET_SIDEGRIDS_REQUEST:
+        case articlesConstants.CHANGE_SEARCH_TERM:
+            state = {
+              ...state,
+              searchTerm: action.payload.searchTerm
+            };
+            break;
+      case articlesConstants.GET_ARTICLES_REQUEST:
         state = {
           ...state,
           loading: true,
         };
         break;
-      case sideGridConstants.GET_SIDEGRIDS_SUCCESS:
+      case articlesConstants.GET_ARTICLES_SUCCESS:
         state = {
           ...state,
           loading: false,
@@ -24,13 +30,16 @@ export default (state = initState, action) => {
           requested: true
         };
         break;
-      case sideGridConstants.GET_SIDEGRIDS_FAILURE:
+      case articlesConstants.GET_ARTICLES_FAILURE:
         state = {
           ...state,
           loading: false,
           error: action.payload.error
         };
         break;
+        case articlesConstants.RESET_ARTICLES:
+          state = initState;
+          break;
     }
     return state;
 

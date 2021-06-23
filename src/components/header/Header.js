@@ -1,7 +1,7 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { SideBar } from './SideBar';
 import logo from '../../assets/img/theGaugeLogo.png'
-import { Box, Button, IconButton, InputAdornment, makeStyles, Tab, Tabs, TextField,withStyles, Theme, InputBase,createStyles, fade } from '@material-ui/core';
+import { Box, Button, IconButton, InputAdornment, makeStyles, Tab, Tabs, TextField,withStyles, Theme, InputBase,createStyles, fade,} from '@material-ui/core';
 
 import './style.css';
 import { SocialHadles } from './SocialHadles';
@@ -10,13 +10,15 @@ import { Autocomplete } from '@material-ui/lab';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllCategory } from '../../actions/category.action';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link, useLocation } from 'react-router-dom';
+import { searchArticles } from '../../actions/articles.action';
+
 
 const categoryList = [
   "POLITICS", "ECONOMY", "GLOBAL", "CULTURE", "MENTAL HEALTH", "READING STACK","musing"
 ];
 
-const searchSuggestions = ["temp 1", "temp 2", "temp 3"];
+const searchSuggestions = ["covid vaccination", "news", "economy"];
 
 const useStyles = makeStyles({
     root: {
@@ -52,6 +54,7 @@ function a11yProps(index) {
 
 export const Header = () => {
 
+  const location = useLocation()
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -63,6 +66,8 @@ export const Header = () => {
     }
     setSideDrawer( open );
   };
+  const [search, setSearch] = useState(null)
+  const articles = useSelector(state => state.articles)
   
   const classes = useStyles();
   const [value, setValue] = React.useState(null);
@@ -74,9 +79,21 @@ export const Header = () => {
   }, [value])
 
   useEffect(() => {
+      console.log(articles.searchTerm)
+    
+  }, [articles.searchTerm])
+
+  useEffect(() => {
     dispatch(getAllCategory());
     
   }, [])
+
+  useEffect(() => {
+    
+    if((search != null && search !="") && location.pathname != '/search') history.push("/search")
+    dispatch(searchArticles(search))
+    
+  }, [search])
 
   
 
@@ -88,9 +105,13 @@ export const Header = () => {
     <Box className="container-row" style={{justifyContent:"space-between", padding:"10px"}}>
       <Box flex="1 1 0" ><Button onClick={toggleDrawer(true)} style={{marginLeft:"2%"}}><Menu style={{fontSize: "3.6rem" ,color: "#641E1E" }} /></Button>
       <SideBar sideDrawer={sideDrawer} toggleDrawer={toggleDrawer} /></Box>
+    
+      <Link to="/">
       <Box flex="1 1 0" className="container-row" justifyContent="center">
         <img src={logo} alt="The Guague" className="headerLogo"/>
       </Box> 
+      </Link>
+      
       <Box flex="1 1 0" textAlign="right" className="container-column" alignItems="flex-end" justifyContent="space-between" >
         <Box className="container-row">
           <SocialHadles />
@@ -121,11 +142,18 @@ export const Header = () => {
               <Autocomplete
                 freeSolo
                 id="free-solo-2-demo"
+                onChange={(e) => {
+                  
+                  setSearch(e.target.textContent)
+                }}
                 disableClearable
                 options={searchSuggestions}
                 renderInput={(params) => (
                   <TextField
                     {...params}
+                    value={search}
+                    onChange={(e) => {
+                      setSearch(e.target.value)}}
                     label="SEARCH OUR WORK"
                     margin="normal"
                     InputProps={{ ...params.InputProps, type: 'search',
@@ -140,12 +168,15 @@ export const Header = () => {
                 )}
               />
           </Box>
-          <IconButton style={{color: '#641E1E'}}><Home style={{fontSize: "3rem"}}/></IconButton>
+          <IconButton onClick={() => {
+            history.push('/')
+          }} style={{color: '#641E1E'}}><Home style={{fontSize: "3rem"}}/></IconButton>
           
         </Box>
       </Box>
       
     </Box>
+    
     {/* Tabs */}
     <Box className="container-row" style={{justifyContent:"center", marginTop:"0"}}>
     <Tabs

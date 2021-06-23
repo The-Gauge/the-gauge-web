@@ -1,4 +1,4 @@
-import { sideGridConstants } from "../actions/constants";
+import { featuredConstants,  } from "../actions/constants";
 
 
 const initState = {
@@ -10,13 +10,13 @@ const initState = {
 
 export default (state = initState, action) => {
     switch (action.type) {
-      case sideGridConstants.GET_SIDEGRIDS_REQUEST:
+      case featuredConstants.GET_FEATURED_REQUEST:
         state = {
           ...state,
           loading: true,
         };
         break;
-      case sideGridConstants.GET_SIDEGRIDS_SUCCESS:
+      case featuredConstants.GET_FEATURED_SUCCESS:
         state = {
           ...state,
           loading: false,
@@ -24,7 +24,7 @@ export default (state = initState, action) => {
           requested: true
         };
         break;
-      case sideGridConstants.GET_SIDEGRIDS_FAILURE:
+      case featuredConstants.GET_FEATURED_FAILURE:
         state = {
           ...state,
           loading: false,

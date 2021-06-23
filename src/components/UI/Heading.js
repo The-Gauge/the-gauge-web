@@ -12,7 +12,8 @@ const useStyles = makeStyles({
     fontSize: '2.5rem',
     lineHeight: '60px',
     letterSpacing: '0.185em',
-    width: "60%"
+    minWidth: "60%",
+    padding:'0 4rem'
   },
 })
 

@@ -6,7 +6,7 @@ import { Autocomplete } from '@material-ui/lab';
 import { Search } from '@material-ui/icons';
 
 export const HeaderFixed = (props) => {
-  const searchSuggestions = ['fdf', 'fdf']
+  const searchSuggestions = ["covid vaccination", "news", "economy"];
 
   const [sideDrawer, setSideDrawer] = React.useState(false);
   const toggleDrawer = (open) => (event) => {
