@@ -15,8 +15,8 @@ function Footer(){
                 <Grid item sm={4} xs={12} style={{textAlign: matches && 'center'}}>
                   <Box className='container-column' style={{alignItems: matches ? 'center' :'flex-start'}}>
                   <h4>CONTACT US</h4>
-                    <p className="size">thegauge@gmail.com</p>
-                 <a href="#"><h4>SUBMISSION</h4></a>
+                    <a href="mailto:thegaugeofficial@gmail.com" className="size">thegaugeofficial@gmail.com</a>
+                 <a href=""><h4>SUBMISSION</h4></a>
                  <a href="#"><h4>JOIN US</h4></a>
                  </Box>
                </Grid>

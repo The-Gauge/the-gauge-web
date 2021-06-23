@@ -5,8 +5,11 @@ import Button from '@material-ui/core/Button';
 import {List, ListItem, ListItemText, Divider} from '@material-ui/core/';
 import MenuIcon from '@material-ui/icons/Menu';
 import { SocialHadles } from './SocialHadles';
+import { useHistory } from 'react-router-dom';
 
 export const SideBar = (props) => {
+
+  const history = useHistory()
   const useStyles = makeStyles({
     list: {
       width: '30rem',
@@ -27,15 +30,17 @@ export const SideBar = (props) => {
       onKeyDown={props.toggleDrawer ( false)}
     >
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemText primary={text} />
+        {props.categories && props.categories.length> 0 && props.categories.map((category, index) => (
+          <ListItem onClick={() => {
+            history.push(`/category/${category._id}`)
+          }} button key={category._id}>
+            <ListItemText style={{textTransform:'capitalize'}} primary={category.name} />
           </ListItem>
         ))}
       </List>
       <Divider />
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
+        {['Contact Us', 'Our Team', 'Join Us'].map((text, index) => (
           <ListItem button key={text}>
             <ListItemText primary={text} />
           </ListItem>

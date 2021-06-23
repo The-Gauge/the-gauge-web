@@ -84,7 +84,7 @@ export const Header = () => {
   }, [articles.searchTerm])
 
   useEffect(() => {
-    dispatch(getAllCategory());
+    if(!categories.requested)dispatch(getAllCategory());
     
   }, [])
 
@@ -104,7 +104,7 @@ export const Header = () => {
     <>
     <Box className="container-row" style={{justifyContent:"space-between", padding:"10px"}}>
       <Box flex="1 1 0" ><Button onClick={toggleDrawer(true)} style={{marginLeft:"2%"}}><Menu style={{fontSize: "3.6rem" ,color: "#641E1E" }} /></Button>
-      <SideBar sideDrawer={sideDrawer} toggleDrawer={toggleDrawer} /></Box>
+      <SideBar categories={categories.categories} sideDrawer={sideDrawer} toggleDrawer={toggleDrawer} /></Box>
     
       <Link to="/">
       <Box flex="1 1 0" className="container-row" justifyContent="center">
