@@ -27,7 +27,7 @@ const Banner = ({article}) => {
     <Box className="container-column"   style={{ width: "100%", cursor:'pointer' }}>
       <Box
       onClick={onClick}
-        style={{ width: "90%", height:'46rem', justifyContent: "center", marginBottom: "1rem",
+        style={{ width: "90%", height:'44rem', justifyContent: "center", marginBottom: "1rem",
         backgroundImage: `url("${publicUrl}${article.articlePictures[0].imgLink}")`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',

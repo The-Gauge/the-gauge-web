@@ -30,6 +30,11 @@ export const SideBar = (props) => {
       onKeyDown={props.toggleDrawer ( false)}
     >
       <List>
+      <ListItem onClick={() => {
+            history.push(`/`)
+          }} button key="Home">
+            <ListItemText style={{textTransform:'capitalize'}} primary="Home" />
+          </ListItem>
         {props.categories && props.categories.length> 0 && props.categories.map((category, index) => (
           <ListItem onClick={() => {
             history.push(`/category/${category._id}`)

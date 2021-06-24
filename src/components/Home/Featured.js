@@ -13,7 +13,7 @@ const ArticleBox = ({article}) => {
   }
   return (
 
-    <Grid onClick={onClick} item xs={12} sm={6} className='container-row' style={{marginTop:'4rem', cursor: 'pointer'}}
+    <Grid onClick={onClick} item xs={12} sm={6} className='container-row' style={{marginTop:'4rem', cursor: 'pointer', justifyContent:'center'}}
             //style={{justifyContent:'center'}}
             >
               <Box className="container-column"  style={{ height:'30rem', width: '90%', marginBottom:'2rem', backgroundImage: `url("${publicUrl}${article.articlePictures[0].imgLink}")`, justifyContent:'flex-end',
@@ -42,7 +42,7 @@ export const Featured = () => {
         setArticles(featured.articles)
     }, [featured.articles])
     useEffect(() => {
-        dispatch(getFeaturedArticles())
+        if(!featured.requested)dispatch(getFeaturedArticles())
     }, [])
 
     return (

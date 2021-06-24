@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { SideBar } from './SideBar';
-import logo from '../../assets/img/theGaugeLogo.png'
+import logo from '../../assets/logos/logobgb.png'
 import { Box, Button, IconButton, InputAdornment, makeStyles, Tab, Tabs, TextField,withStyles, Theme, InputBase,createStyles, fade,} from '@material-ui/core';
 
 import './style.css';

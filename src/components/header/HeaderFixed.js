@@ -4,10 +4,11 @@ import Menu from '@material-ui/icons/Menu';
 import { SideBar } from './SideBar';
 import { Autocomplete } from '@material-ui/lab';
 import { Search } from '@material-ui/icons';
-import { useHistory, useLocation } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllCategory } from '../../actions/category.action';
 import { searchArticles } from '../../actions/articles.action';
+import logo from '../../assets/logos/logosmB.png'
 
 export const HeaderFixed = (props) => {
   const searchSuggestions = ["covid vaccination", "news", "economy"];
@@ -85,18 +86,16 @@ export const HeaderFixed = (props) => {
   return (
     <>
       <AppBar position="fixed" >
-        <Toolbar style={{ padding: '0', justifyContent:'space-between' }} className='container-row'>
+        <Toolbar style={{ padding: '0', justifyContent:'space-between', paddingRight:'2rem' }} className='container-row'>
           <Box className='container-row'><Button onClick={toggleDrawer(true)}  >
             <Typography variant="h6" color="inherit"><Menu style={{ fontSize: "3.3rem", color: 'white' }} /></Typography></Button>
           <SideBar categories={categories.categories} sideDrawer={sideDrawer} toggleDrawer={toggleDrawer} />
-          <Typography variant="h2" color="inherit">
-            The Gauge
-          </Typography>
+          <Link to="/"><img src={logo} style={{height:'5rem'}}></img></Link>
           </Box>
           <input
                     value={search}
                     onChange={handleChange}
-                    style={{ marginRight:'2rem', height:'4rem', maxWidth:'30rem',width:'30rem' }}
+                    style={{  height:'4rem', maxWidth:'30rem',width:'28rem' }}
         
                     className=" text-center focus:outline-none focus:border-blue-500 border border-gray-300 py-2 w-full"
                     placeholder="Search our work"

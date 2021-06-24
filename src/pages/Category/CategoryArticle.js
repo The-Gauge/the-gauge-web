@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useLocation, useParams } from 'react-router-dom'
 import { getCategoryArticles, resetArticles } from '../../actions/articles.action'
 import image from '../../assets/img/sampleArticle.png'
+import { Featured } from '../../components/Home/Featured'
 import { Heading } from '../../components/UI/Heading'
 import { publicUrl } from '../../urlConstants'
 
@@ -24,6 +25,8 @@ const useStyles = makeStyles({
     fontFamily: "Ramabhadra",
     fontSize: "18px",
     letterSpacing: "0.195em",
+    textAlign:'center',
+    justifySelf:'center'
   }
 })
 
@@ -70,7 +73,7 @@ const ArticleBox = ({article}) => {
   }
 
   return (
-    <Grid item xs={12} sm={6} className='container-column' onClick={onClick} style={{cursor:'pointer'}}>
+    <Grid item xs={12} sm={6} className='container-column' onClick={onClick} style={{cursor:'pointer',marginBottom:'3rem'}}>
           <Box style={{
             height:'28rem',
             width: '90%', 
@@ -81,10 +84,10 @@ const ArticleBox = ({article}) => {
           }}>
             
           </Box>
-          <Box className='container-row' classes={{ root: classes.articleTitle }}>
+          <Box style={{width:'90%'}} justifyContent="center" className='container-row' classes={{ root: classes.articleTitle }}>
           {article.name}
               </Box>
-          <Box className='container-row' classes={{ root: classes.articleTitle }}>
+          <Box style={{width:'90%'}} justifyContent="center" className='container-row' classes={{ root: classes.articleTitle }}>
             {article.author && article.author.name}
               </Box>
         </Grid>
@@ -115,6 +118,7 @@ const ArticleBox = ({article}) => {
           
         </Grid>
       )}
+      <Featured />
       
     </>
 

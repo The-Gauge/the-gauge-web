@@ -49,7 +49,7 @@ export const Search = () => {
               className="container-column"
               justifyContent="space-between"
               style={{
-                height: isBig ? "10rem" : "20rem",
+                height: isBig ? "10rem" : "22rem",
                 width: "100%",
                 alignItems: "flex-start",
                 marginLeft: "3rem",
